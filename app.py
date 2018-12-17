@@ -95,19 +95,20 @@ table.put_item(
 
 table.put_item(
     Item={
-        'memoId': 'z',
+        'memoId': 'y',
         'message': 'This is an example message test sample',
-        'tag': 'three'
+        'tag': 'example-tag-two'
     },
 )
 
 table.put_item(
     Item={
-        'memoId': 'y',
+        'memoId': 'z',
         'message': 'This is an example message test sample',
-        'tag': 'example-tag-two'
-    }
+        'tag': 'example-tag-three'
+    },
 )
+
 
 response = table.get_item(
     Key={
@@ -115,14 +116,10 @@ response = table.get_item(
         'tag': 'three'
     }
 )
-item = response['Item']
-print(item)
-print(table.item_count)
 
-# @app.route('/memos')
-# def memos():
-#     response = table.scan()
-#     return json.dumps(response['Items'], cls=DecimalEncoder)
+print(response);
+
+
 @app.route('/memos')
 def memos():
     query = request.args.get('tag')
